@@ -1,0 +1,65 @@
+---
+packages:
+  - htop
+  - smartmontools
+  - indicator-multiload
+  - faenza-icon-theme
+  - unity-tweak-tool
+  - variety
+  - gcc
+  - gimp
+  - git
+  - git-flow
+  - unrar
+  - network-manager-openvpn-gnome
+  - network-manager-vpnc-gnome
+  - gparted
+  - wireshark
+  - nfdump
+  - clang
+  - cmake
+  - python-pip
+  - python-dev
+  - python3-dev
+  - libcupti-dev
+  - libc6:i386
+  - libncurses5:i386
+  - libstdc++6:i386
+  - lib32z1
+  - libbz2-1.0:i386
+  - libboost-python-dev
+  - virtualbox
+  - virtualbox-dkms
+  - php5.6-mbstring
+  - php5.6-mcrypt
+  - php5.6-mysql
+  - php5.6-xml
+  - php5.6-dev
+  - libpcre3-dev
+
+docker:
+  package: docker-ce
+  repo:
+    url: https://download.docker.com/linux/ubuntu
+  gpg:
+    id: 0EBFCD88
+    url: https://download.docker.com/linux/ubuntu/gpg
+  compose:
+    version: 1.12.0
+
+mongo:
+  version: 3.4
+  packages:
+    - mongodb-org-shell
+    - mongodb-org-tools
+  repo:
+    url: http://repo.mongodb.org/apt/ubuntu
+    filename: mongodb-org-3.4
+  gpg:
+    id: 0C49F3730359A14518585931BC711F9BA15703C6
+    keyserver: hkp://keyserver.ubuntu.com:80
+
+php:
+  version: 5.6
+  repo:
+    ppa: ppa:ondrej/php

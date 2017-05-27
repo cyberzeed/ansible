@@ -1,0 +1,6 @@
+---
+- name: update apt cache
+  raw: apt-get update
+
+- name: install pip2, pip3, python-apt and python3-apt
+  raw: apt-get install -y python-pip python3-pip python-apt and python3-apt

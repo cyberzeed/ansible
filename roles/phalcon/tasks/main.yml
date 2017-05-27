@@ -1,0 +1,12 @@
+---
+- name: copy zephir script to /usr/local/bin
+  copy:
+    src: zephir
+    dest: /usr/local/bin/zephir
+    mode: 0755
+
+- name: copy beanstalk script to /usr/local/bin
+  copy:
+    src: beanstalk
+    dest: /usr/local/bin/beanstalk
+    mode: 0755

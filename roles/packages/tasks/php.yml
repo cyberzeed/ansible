@@ -1,0 +1,4 @@
+---
+- name: add PPA of php {{ php.version }}
+  apt_repository:
+    repo: "{{ php.repo.ppa }}"

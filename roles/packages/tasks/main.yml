@@ -1,0 +1,20 @@
+---
+- include: setup.yml
+  tags:
+    - setup
+
+- include: general.yml
+  tags:
+    - general
+
+- include: docker.yml
+  tags:
+    - docker
+
+# - include: mongo.yml
+#   tags:
+#     - mongo
+
+- include: php.yml
+  tags:
+    - php

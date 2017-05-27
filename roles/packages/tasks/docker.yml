@@ -1,0 +1,42 @@
+---
+- name: get ubuntu version
+  shell: lsb_release -cs
+  register: ubuntu_version_name
+
+- name: get kernel
+  shell: uname -s
+  register: kernel_name
+
+- name: get architecture
+  shell: uname -m
+  register: architecture
+
+- name: remove docker-engine
+  apt: name={{ item }} state=absent purge=yes
+  with_items:
+    - docker
+    - docker-engine
+
+- name: add Docker’s official GPG key
+  apt_key:
+    id: "{{ docker.gpg.id }}"
+    url: "{{ docker.gpg.url }}"
+    state: present
+
+- name: set up the stable docker repository
+  apt_repository:
+    repo: deb [ arch=amd64 ] {{ docker.repo.url }} {{ ubuntu_version_name.stdout }} stable
+    filename: docker
+    state: present
+
+- name: install docker-ce
+  apt:
+    name: "{{ docker.package }}"
+    update_cache: yes
+
+- name: install docker compose
+  get_url:
+    url: https://github.com/docker/compose/releases/download/{{ docker.compose.version }}/docker-compose-{{ kernel_name.stdout }}-{{ architecture.stdout }}
+    dest: /usr/local/bin/docker-compose
+    mode: 0755
+    force: yes

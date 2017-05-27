@@ -1,0 +1,16 @@
+---
+- name: get ubuntu version
+  shell: lsb_release -cs
+  register: ubuntu_version_name
+
+- name: add MongoDB public GPG key
+  apt_key:
+    id: "{{ mongo.gpg.id }}"
+    keyserver: "{{ mongo.gpg.keyserver }}"
+    state: present
+
+- name: set up the mongo repository
+  apt_repository:
+    repo: deb [ arch=amd64,arm64 ] {{ mongo.repo.url }} {{ ubuntu_version_name.stdout }}/mongodb-org/{{ mongo.version }} multiverse
+    filename: "{{ mongo.repo.filename }}"
+    state: present
