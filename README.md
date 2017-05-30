@@ -22,6 +22,9 @@ Ansible for automatically set up my computer
 - network-manager-openvpn-gnome
 - network-manager-vpnc-gnome
 - nfdump
+- nodejs
+- nodejs-legacy
+- npm
 - python3-dev
 - python-dev
 - python-pip
@@ -33,3 +36,4 @@ Ansible for automatically set up my computer
 - unity-tweak-tool
 - unrar
 - wireshark
+- yarn

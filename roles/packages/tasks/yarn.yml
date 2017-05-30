@@ -1,0 +1,16 @@
+---
+- name: add yarn GPG key
+  apt_key:
+    url: "{{ yarn.gpg.url }}"
+    state: present
+
+- name: set up the stable yarn repository
+  apt_repository:
+    repo: deb {{ yarn.repo.url }} stable main
+    filename: "{{ yarn.repo.filename }}"
+    state: present
+
+- name: install yarn
+  apt:
+    name: "{{ yarn.package }}"
+    update_cache: yes

@@ -20,6 +20,9 @@ packages:
   - network-manager-openvpn-gnome
   - network-manager-vpnc-gnome
   - nfdump
+  - nodejs
+  - nodejs-legacy
+  - npm
   - python3-dev
   - python-dev
   - python-pip
@@ -65,3 +68,11 @@ php:
     - php5.6-mysql
     - php5.6-xml
     - php5.6-dev
+
+yarn:
+  package: yarn
+  repo:
+    url: https://dl.yarnpkg.com/debian/
+    filename: yarn
+  gpg:
+    url: https://dl.yarnpkg.com/debian/pubkey.gpg

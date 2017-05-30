@@ -18,3 +18,8 @@
 - include: php.yml
   tags:
     - php
+
+- include: yarn.yml
+  tags:
+    - node
+    - yarn
