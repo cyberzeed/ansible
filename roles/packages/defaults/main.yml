@@ -1,41 +1,36 @@
 ---
 packages:
-  - htop
-  - smartmontools
-  - indicator-multiload
+  - clang
+  - cmake
   - faenza-icon-theme
-  - unity-tweak-tool
-  - variety
   - gcc
   - gimp
   - git
   - git-flow
-  - unrar
-  - network-manager-openvpn-gnome
-  - network-manager-vpnc-gnome
   - gparted
-  - wireshark
-  - nfdump
-  - clang
-  - cmake
-  - python-pip
-  - python-dev
-  - python3-dev
-  - libcupti-dev
+  - htop
+  - indicator-multiload
+  - lib32z1
+  - libboost-python-dev
+  - libbz2-1.0:i386
   - libc6:i386
+  - libcupti-dev
   - libncurses5:i386
   - libstdc++6:i386
-  - lib32z1
-  - libbz2-1.0:i386
-  - libboost-python-dev
+  - network-manager-openvpn-gnome
+  - network-manager-vpnc-gnome
+  - nfdump
+  - python3-dev
+  - python-dev
+  - python-pip
+  - smartmontools
+  - terminator
+  - variety
   - virtualbox
   - virtualbox-dkms
-  - php5.6-mbstring
-  - php5.6-mcrypt
-  - php5.6-mysql
-  - php5.6-xml
-  - php5.6-dev
-  - libpcre3-dev
+  - unity-tweak-tool
+  - unrar
+  - wireshark
 
 docker:
   package: docker-ce
@@ -63,3 +58,10 @@ php:
   version: 5.6
   repo:
     ppa: ppa:ondrej/php
+  packages:
+    - libpcre3-dev
+    - php5.6-mbstring
+    - php5.6-mcrypt
+    - php5.6-mysql
+    - php5.6-xml
+    - php5.6-dev
