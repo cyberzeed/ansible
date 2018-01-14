@@ -1,0 +1,6 @@
+---
+docker_repo_url: https://download.docker.com/linux/ubuntu
+docker_repo_gpg: https://download.docker.com/linux/ubuntu/gpg
+docker_compose_version: 1.18.0
+docker_packages:
+  - docker-ce

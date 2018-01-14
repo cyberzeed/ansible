@@ -1,0 +1,6 @@
+---
+# defaults file for node
+node_version: 8
+node_setup_url: https://deb.nodesource.com/setup_{{ node_version }}.x
+node_packages:
+  - nodejs

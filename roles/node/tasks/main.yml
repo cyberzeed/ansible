@@ -1,0 +1,12 @@
+---
+# tasks file for node
+- name: Set up node repository
+  become: true
+  shell: curl -sL {{ node_setup_url }} | sudo -E bash -
+
+- name: Install node
+  include_role:
+    name: packages
+  vars:
+    module_name: nodejs
+    module_packages: "{{ node_packages }}"

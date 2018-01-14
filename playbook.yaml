@@ -1,0 +1,44 @@
+---
+- hosts: localhost
+  become: true
+  pre_tasks:
+    - name: update apt cache
+      raw: apt-get update
+    - name: install pip2, pip3, python and python3
+      raw: apt-get install -y python python3 python-pip python3-pip
+  roles:
+    - role: packages
+      vars:
+        module_name: general
+        module_packages: "{{ general_packages }}"
+      tags: general
+    - role: packages
+      vars:
+        module_name: yarn
+        module_packages: "{{ yarn_packages | list }}"
+        module_repository:
+          repo: deb {{ yarn_repo_url }} stable main
+          gpg: "{{ yarn_repo_gpg }}"
+          filename: yarn
+      tags: yarn
+    - role: packages
+      vars:
+        module_name: php5
+        module_packages: "{{ php_packages | list }}"
+        module_repository:
+          repo: "{{ php_repo_ppa }}"
+          filename: php
+      tags: php
+    - role: packages
+      vars:
+        module_name: golang
+        module_packages: "{{ golang_packages }}"
+        module_repository:
+          repo: "{{ golang_repo_ppa }}"
+      tags: golang
+    - role: node
+      tags: node
+    - role: docker
+      tags: docker
+    - role: mongo
+      tags: mongo

@@ -1,0 +1,19 @@
+---
+- name: Add GPG key of {{ module_name }}
+  apt_key:
+    url: "{{ repository.gpg }}"
+    state: present
+  when: 'repository.gpg is defined'
+
+- name: Add apt key of {{ module_name }}
+  apt_key:
+    id: "{{ repository.key.id }}"
+    keyserver: "{{ repository.key.url }}"
+    state: present
+  when: 'repository.key is defined'
+
+- name: Setup the {{ module_name }} repository
+  apt_repository:
+    repo: "{{ repository.repo }}"
+    filename: "{{ repository.filename | default(omit) }}"
+    state: present

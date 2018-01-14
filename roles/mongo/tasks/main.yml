@@ -1,0 +1,17 @@
+---
+- name: get ubuntu version
+  shell: lsb_release -cs
+  register: ubuntu_version_name
+
+- name: Install mongo
+  include_role:
+    name: packages
+  vars:
+    module_name: mongo
+    module_packages: "{{ mongo_packages }}"
+    module_repository:
+      repo: deb [ arch=amd64 ] {{ mongo_repo_url }} {{ ubuntu_version_name.stdout }}/mongodb-org/{{ mongo_version }} multivers
+      filename: "{{ mongo_repo_file }}"
+      key:
+        url: "{{ mongo_keyserver }}"
+        id: "{{ mongo_key_id }}"

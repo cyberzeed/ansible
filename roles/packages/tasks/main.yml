@@ -1,25 +1,13 @@
 ---
-- include: setup.yml
-  tags:
-    - setup
+- name: Add repository of {{ module_name }}
+  include_tasks: repository.yml
+  vars:
+    repo_name: "{{ module_name }}"
+    repository: "{{ module_repository }}"
+  when: 'module_repository is defined'
 
-- include: general.yml
-  tags:
-    - general
-
-- include: docker.yml
-  tags:
-    - docker
-
-# - include: mongo.yml
-#   tags:
-#     - mongo
-
-- include: php.yml
-  tags:
-    - php
-
-- include: yarn.yml
-  tags:
-    - node
-    - yarn
+- name: Install packages of {{ module_name }} module
+  apt:
+    name: "{{ item }}"
+    update_cache: yes
+  with_items: "{{ module_packages | list }}"

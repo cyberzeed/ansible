@@ -1,0 +1,74 @@
+---
+# General module
+general_packages:
+  - clang
+  - cmake
+  - faenza-icon-theme
+  - gcc
+  - gimp
+  - git
+  - git-flow
+  - gparted
+  - htop
+  - indicator-multiload
+  - lib32z1
+  - libboost-python-dev
+  - libbz2-1.0:i386
+  - libc6:i386
+  - libcupti-dev
+  - libncurses5:i386
+  - libstdc++6:i386
+  - network-manager-openvpn-gnome
+  - network-manager-vpnc-gnome
+  - nfdump
+  - python3-dev
+  - python-dev
+  - python-pip
+  - smartmontools
+  - socat
+  - terminator
+  - variety
+  - virtualbox
+  - virtualbox-dkms
+  - unity-tweak-tool
+  - unrar
+  - wireshark
+
+# PHP5.6 module
+php_repo_ppa: ppa:ondrej/php
+php_packages:
+  - libpcre3-dev
+  - php5.6-mbstring
+  - php5.6-mcrypt
+  - php5.6-mysql
+  - php5.6-xml
+  - php5.6-dev
+
+# Yarn module
+yarn_repo_url: https://dl.yarnpkg.com/debian/
+yarn_repo_gpg: https://dl.yarnpkg.com/debian/pubkey.gpg
+yarn_repo_file: yarn
+yarn_packages:
+  - yarn
+
+# MongoDB module
+mongo_version: 3.4
+mongo_repo_url: http://repo.mongodb.org/apt/ubuntu
+mongo_repo_file: mongodb-org-{{ mongo_version }}
+mongo_key_id: 0C49F3730359A14518585931BC711F9BA15703C6
+mongo_keyserver: hkp://keyserver.ubuntu.com:80
+mongo_packages:
+  - mongodb-org-shell
+  - mongodb-org-tools
+
+# Docker module
+docker_compose_version: 1.18.0
+
+# Golang module
+golang_repo_ppa: ppa:gophers/archive
+golang_packages:
+  - golang-1.9-go
+
+# NodeJS module
+node_packages:
+  - nodejs

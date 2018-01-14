@@ -1,0 +1,38 @@
+---
+- name: get ubuntu version
+  shell: lsb_release -cs
+  register: ubuntu_version_name
+
+- name: get kernel
+  shell: uname -s
+  register: kernel_name
+
+- name: get architecture
+  shell: uname -m
+  register: architecture
+
+- name: remove docker-engine
+  apt:
+    name: "{{ item }}"
+    state: absent
+    purge: yes
+  with_items:
+    - docker
+    - docker-engine
+
+- name: Install docker
+  include_role:
+    name: packages
+  vars:
+    module_name: docker
+    module_packages: "{{ docker_packages }}"
+    module_repository:
+      repo: deb [ arch=amd64 ] {{ docker_repo_url }} {{ ubuntu_version_name.stdout }} stable
+      gpg: "{{ docker_repo_gpg }}"
+
+- name: install docker compose
+  get_url:
+    url: https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/docker-compose-{{ kernel_name.stdout }}-{{ architecture.stdout }}
+    dest: /usr/local/bin/docker-compose
+    mode: 0755
+    force: yes
